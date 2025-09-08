@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bog6nvsalpfma"]
+
+[ext_resource type="PackedScene" uid="uid://dn3me4ld1wn8x" path="res://scene/Characters/Enemy/base-Zombie.tscn" id="1_lttvb"]
+
+[sub_resource type="GDScript" id="GDScript_qauuh"]
+script/source = "extends \"res://scene/Characters/Enemy/base-Zombie.gd\"
+
+func _ready():
+	Fov_Tolerance=45
+	Fov_Distance=200
+	first_position=self.position
+
+func _process(delta):
+	Player_is_in_Fov_Telorance()
+	call_other_zombies()
+	
+func call_other_zombies():
+	if player_in_tolarance:
+		var zombies = get_tree().get_nodes_in_group(\"S-B-Zombie\")
+		for zombie in zombies:
+			if zombie.position.distance_to(position) < 2000:
+				zombie.look_at(Player.global_position)
+
+func _draw():
+	var start_angle =deg_to_rad(Fov_Tolerance/2)
+	var end_angle = deg_to_rad(Fov_Tolerance/2)
+	var start_vector = Vector2(Fov_Distance, 0).rotated(start_angle)
+	var end_vector = Vector2(Fov_Distance, 0).rotated(end_angle)
+
+	draw_polygon([self.position,start_angle, end_vector],[Color(1,0,0,0.5)])
+"
+
+[node name="Base-Zombie" instance=ExtResource("1_lttvb")]
+script = SubResource("GDScript_qauuh")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = -9.41753e-05
+scale = Vector2(0.920005, 1)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://csnjag86n3w3o"]
+
+[ext_resource type="Script" path="res://scripts/Character.gd" id="1_2lskj"]
+[ext_resource type="Texture2D" uid="uid://bm357tkxw4sgn" path="res://GFX/PNG/player/colt_16.png" id="2_ya60b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvbcb"]
+radius = 8.0
+height = 18.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y42r"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ya60b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Characters" type="CharacterBody2D"]
+position = Vector2(519, 295)
+script = ExtResource("1_2lskj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_nvbcb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(1.232, 1)
+sprite_frames = SubResource("SpriteFrames_8y42r")
+animation = &"idle"

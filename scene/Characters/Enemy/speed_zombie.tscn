@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckbvkx8q0vxq"]
+
+[ext_resource type="PackedScene" uid="uid://d0yyg8docpy4c" path="res://scene/Characters/Enemy/base_zombie2.tscn" id="1_8qah8"]
+[ext_resource type="Script" path="res://scripts/Speed_zombie.gd" id="2_enfq5"]
+[ext_resource type="Script" path="res://scripts/states/speed_zombie_movment.gd" id="3_7n3jm"]
+[ext_resource type="Texture2D" uid="uid://dt275hcyvgoll" path="res://GFX/PNG/Zombies/Speed_zombie_16.png" id="3_nggov"]
+[ext_resource type="Script" path="res://scripts/states/Speed_Zombie_idle.gd" id="3_sjibg"]
+[ext_resource type="Script" path="res://scripts/states/S_V_to_player_command.gd" id="5_ntsjb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_36a78"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nggov")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvhwl"]
+resource_local_to_scene = true
+height = 20.0
+
+[node name="Speed_zombie" instance=ExtResource("1_8qah8")]
+script = ExtResource("2_enfq5")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_36a78")
+
+[node name="Zombie_idle" parent="State_Machine" index="0"]
+script = ExtResource("3_sjibg")
+
+[node name="zombie_movment" parent="State_Machine" index="1"]
+script = ExtResource("3_7n3jm")
+
+[node name="V_to_player_command" parent="State_Machine" index="2"]
+script = ExtResource("5_ntsjb")
+
+[node name="Zombie_hit_box" parent="." index="3"]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="Zombie_hit_box" index="0"]
+shape = SubResource("CapsuleShape2D_qvhwl")

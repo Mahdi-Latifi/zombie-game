@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn3me4ld1wn8x"]
+
+[ext_resource type="PackedScene" uid="uid://csnjag86n3w3o" path="res://scene/Characters/Character.tscn" id="1_16imj"]
+[ext_resource type="Script" path="res://scripts/base-Zombie.gd" id="2_cxotn"]
+[ext_resource type="Texture2D" uid="uid://bm357tkxw4sgn" path="res://GFX/PNG/player/colt_16.png" id="3_py2mc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msxqo"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fdt0f"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_py2mc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fsoc"]
+radius = 15.0
+height = 48.0
+
+[node name="Base-Zombie" instance=ExtResource("1_16imj")]
+script = ExtResource("2_cxotn")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CapsuleShape2D_msxqo")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_fdt0f")
+
+[node name="Zombie_hit_box" type="Area2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zombie_hit_box" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_7fsoc")
+
+[node name="attack_cooldown" type="Timer" parent="." index="3"]
+
+[connection signal="body_entered" from="Zombie_hit_box" to="." method="_on_zombie_hit_box_body_entered"]

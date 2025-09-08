@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://beeyh4osvculi"]
+
+[ext_resource type="Script" path="res://scripts/weapen/Shot_gun_bullet.gd" id="1_4ylwg"]
+[ext_resource type="PackedScene" uid="uid://ctetlqfdeb4t1" path="res://scene/Characters/players/bullet.tscn" id="1_y0xxj"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4ylwg")
+
+[node name="bullet" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet2" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet3" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet4" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet5" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet6" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet7" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet8" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet9" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet10" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet11" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet12" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet13" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet14" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet15" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet16" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet17" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet18" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet19" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet20" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet21" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet22" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet23" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet24" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet25" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet26" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet27" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet28" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet29" parent="." instance=ExtResource("1_y0xxj")]
+
+[node name="bullet30" parent="." instance=ExtResource("1_y0xxj")]

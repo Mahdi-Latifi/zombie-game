@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkfvwvru5xmxp"]
+
+[ext_resource type="PackedScene" uid="uid://d0yyg8docpy4c" path="res://scene/Characters/Enemy/base_zombie2.tscn" id="1_w5wwr"]
+[ext_resource type="Script" path="res://scripts/Destroy_zombie.gd" id="2_pdpe2"]
+[ext_resource type="Texture2D" uid="uid://cd1o8ea5j1b4q" path="res://GFX/PNG/Zombies/destroy_zombie_16.png" id="3_h2q1t"]
+[ext_resource type="Script" path="res://scripts/states/Destroy_Zombie_idle.gd" id="4_206c7"]
+[ext_resource type="Script" path="res://scripts/states/destroy_zombie_movment.gd" id="4_shibb"]
+[ext_resource type="Script" path="res://scripts/states/D_V_to_player_command.gd" id="6_178jf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4gk0"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_h2q1t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq6k8"]
+resource_local_to_scene = true
+radius = 126.0
+height = 252.0
+
+[node name="Destroy_Zombie" instance=ExtResource("1_w5wwr")]
+script = ExtResource("2_pdpe2")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_h4gk0")
+
+[node name="Zombie_idle" parent="State_Machine" index="0"]
+script = ExtResource("4_206c7")
+
+[node name="zombie_movment" parent="State_Machine" index="1"]
+script = ExtResource("4_shibb")
+
+[node name="V_to_player_command" parent="State_Machine" index="2"]
+script = ExtResource("6_178jf")
+
+[node name="Zombie_hit_box" parent="." index="3"]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="Zombie_hit_box" index="0"]
+shape = SubResource("CapsuleShape2D_xq6k8")
+
+[connection signal="body_entered" from="Zombie_hit_box" to="." method="_on_zombie_box_body_entered"]
+[connection signal="body_exited" from="Zombie_hit_box" to="." method="_on_zombie_hit_box_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

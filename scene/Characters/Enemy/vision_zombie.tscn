@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://ysq7ui4mi3qo"]
+
+[ext_resource type="PackedScene" uid="uid://d0yyg8docpy4c" path="res://scene/Characters/Enemy/base_zombie2.tscn" id="1_u30ai"]
+[ext_resource type="Script" path="res://scripts/Vision_Zombie.gd" id="2_ph0wc"]
+[ext_resource type="Texture2D" uid="uid://cthfwy6w4yq6x" path="res://GFX/PNG/Zombies/vision_zombie_16.png" id="3_7bca3"]
+[ext_resource type="Script" path="res://scripts/states/Vision_Zombie_idle.gd" id="3_tecb5"]
+[ext_resource type="Script" path="res://scripts/states/vision_zombie_movment.gd" id="4_jat1o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmaku"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7bca3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_os67s"]
+resource_local_to_scene = true
+radius = 18.0
+height = 52.0
+
+[node name="Vision_Zombie" instance=ExtResource("1_u30ai")]
+position = Vector2(515, 295)
+script = ExtResource("2_ph0wc")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(-1, 2)
+sprite_frames = SubResource("SpriteFrames_gmaku")
+
+[node name="Zombie_idle" parent="State_Machine" index="0"]
+script = ExtResource("3_tecb5")
+
+[node name="zombie_movment" parent="State_Machine" index="1"]
+script = ExtResource("4_jat1o")
+
+[node name="Zombie_hit_box" parent="." index="3"]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="Zombie_hit_box" index="0"]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_os67s")
+
+[node name="Health_bar" parent="." index="5"]
+offset_left = -9.0
+offset_right = 11.0

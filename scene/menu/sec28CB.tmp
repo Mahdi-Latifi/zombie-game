@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://cie06so1tvtve"]
+
+[ext_resource type="Script" path="res://scripts/Menu/second_menu_sp.gd" id="1_h0wf4"]
+[ext_resource type="Texture2D" uid="uid://7l5n5nuup4nd" path="res://GFX/BUTTONS/bUTTON-Peresedl.png" id="1_noywe"]
+[ext_resource type="Texture2D" uid="uid://cjlm0os7m08iq" path="res://GFX/BUTTONS/bUTTONl.png" id="2_coa6b"]
+
+[node name="Second-Menu-Sp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 764.0
+offset_top = -3.0
+offset_right = -188.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h0wf4")
+
+[node name="Second-Menu-Sp" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Second-Menu-Sp"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="New_Game" type="TextureButton" parent="Second-Menu-Sp/VBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_pressed = ExtResource("1_noywe")
+texture_hover = ExtResource("2_coa6b")
+
+[node name="Label" type="Label" parent="Second-Menu-Sp/VBoxContainer/New_Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بازی جدید
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load_Game" type="TextureButton" parent="Second-Menu-Sp/VBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Second-Menu-Sp/VBoxContainer/Load_Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بارگذاری"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="Second-Menu-Sp/VBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Second-Menu-Sp/VBoxContainer/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بازگشت"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(399, 30)
+layout_mode = 0
+offset_left = -551.0
+offset_top = 77.0
+offset_right = -483.938
+offset_bottom = 108.0
+placeholder_text = "Write Your name of game"
+
+[connection signal="pressed" from="Second-Menu-Sp/VBoxContainer/New_Game" to="." method="_on_new_game_pressed"]

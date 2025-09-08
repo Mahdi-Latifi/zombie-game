@@ -1,0 +1,163 @@
+[gd_scene load_steps=19 format=3 uid="uid://b0fdlb3lk2kjg"]
+
+[ext_resource type="PackedScene" uid="uid://csnjag86n3w3o" path="res://scene/Characters/Character.tscn" id="1_gqfm1"]
+[ext_resource type="Script" path="res://scripts/states/State Machine.gd" id="2_axvbj"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_x73a4"]
+[ext_resource type="Texture2D" uid="uid://bt4g678amogry" path="res://GFX/PNG/player/knife_16.png" id="3_15g6d"]
+[ext_resource type="Script" path="res://scripts/states/Player_walk.gd" id="3_l6dty"]
+[ext_resource type="Texture2D" uid="uid://4va8vxw0tia4" path="res://GFX/PNG/player/colt_idle_16.png" id="3_oi0ac"]
+[ext_resource type="Texture2D" uid="uid://hvld5rsaxibh" path="res://GFX/PNG/player/shoutgun_162.png" id="3_txc83"]
+[ext_resource type="Texture2D" uid="uid://ci4tulcbtg58w" path="res://GFX/PNG/player/rifle16.png" id="6_fwka1"]
+[ext_resource type="Script" path="res://scripts/states/Player_Run.gd" id="6_wumsf"]
+[ext_resource type="Script" path="res://scripts/weapen/weapon manager.gd" id="7_7iqcd"]
+[ext_resource type="Script" path="res://scripts/weapen/Colt.gd" id="8_r6ux2"]
+[ext_resource type="PackedScene" uid="uid://ctetlqfdeb4t1" path="res://scene/Characters/players/bullet.tscn" id="9_ofq02"]
+[ext_resource type="Script" path="res://scripts/weapen/Shotgun.gd" id="11_5b44w"]
+[ext_resource type="Script" path="res://scripts/weapen/Rifle.gd" id="12_tv2jv"]
+[ext_resource type="PackedScene" uid="uid://beeyh4osvculi" path="res://scene/Characters/players/Shot_gun_bullet.tscn" id="13_pah5o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0nsi8"]
+radius = 6.7423
+height = 15.8443
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7yfu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_txc83")
+}],
+"loop": true,
+"name": &"Shotgun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oi0ac")
+}],
+"loop": true,
+"name": &"colt",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_15g6d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fwka1")
+}],
+"loop": true,
+"name": &"rifle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n8jwl"]
+height = 20.0
+
+[node name="Players" instance=ExtResource("1_gqfm1")]
+position = Vector2(0, 0)
+collision_mask = 6
+script = ExtResource("2_x73a4")
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+zoom = Vector2(3, 3)
+process_callback = 0
+position_smoothing_speed = 0.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+light_mask = 4112
+visibility_layer = 16
+position = Vector2(-1.65178, 0.23597)
+shape = SubResource("CapsuleShape2D_0nsi8")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_h7yfu")
+animation = &"colt"
+
+[node name="State Machine" type="Node" parent="." index="3" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_axvbj")
+initial_state = NodePath("Player_walk")
+
+[node name="Player_walk" type="Node" parent="State Machine" index="0" node_paths=PackedStringArray("Players")]
+script = ExtResource("3_l6dty")
+Players = NodePath("../..")
+
+[node name="Player_run" type="Node" parent="State Machine" index="1" node_paths=PackedStringArray("Players")]
+script = ExtResource("6_wumsf")
+Players = NodePath("../..")
+
+[node name="Player_Hit_box" type="Area2D" parent="." index="4"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Hit_box" index="0"]
+visible = false
+light_mask = 8200
+visibility_layer = 16
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_n8jwl")
+
+[node name="attack_cooldown" type="Timer" parent="." index="5"]
+
+[node name="weapon manager" type="Node" parent="." index="6" node_paths=PackedStringArray("Start_weapon")]
+script = ExtResource("7_7iqcd")
+Start_weapon = NodePath("Colt")
+
+[node name="Colt" type="Node" parent="weapon manager" index="0" node_paths=PackedStringArray("Reload_timer", "Fire_rate_timer", "end_of_gun", "gun_diraction", "animation", "Pleyer2")]
+script = ExtResource("8_r6ux2")
+Reload_timer = NodePath("../reload_Time")
+Fire_rate_timer = NodePath("../Fire_rate")
+bullet = ExtResource("9_ofq02")
+end_of_gun = NodePath("../../end_of_gun")
+gun_diraction = NodePath("../../gun_diraction")
+animation = NodePath("../../AnimatedSprite2D")
+Pleyer2 = NodePath("../..")
+
+[node name="Rifle" type="Node" parent="weapon manager" index="1" node_paths=PackedStringArray("Reload_timer", "Fire_rate_timer", "end_of_gun", "gun_diraction", "animation", "Pleyer2")]
+script = ExtResource("12_tv2jv")
+Reload_timer = NodePath("../reload_Time")
+Fire_rate_timer = NodePath("../Fire_rate")
+bullet = ExtResource("9_ofq02")
+end_of_gun = NodePath("../../end_of_gun")
+gun_diraction = NodePath("../../gun_diraction")
+animation = NodePath("../../AnimatedSprite2D")
+Pleyer2 = NodePath("../..")
+
+[node name="Shotgun" type="Node" parent="weapon manager" index="2" node_paths=PackedStringArray("Reload_timer", "Fire_rate_timer", "end_of_gun", "gun_diraction", "animation", "Pleyer2")]
+script = ExtResource("11_5b44w")
+Reload_timer = NodePath("../reload_Time")
+Fire_rate_timer = NodePath("../Fire_rate")
+bullet = ExtResource("13_pah5o")
+end_of_gun = NodePath("../../end_of_gun")
+gun_diraction = NodePath("../../gun_diraction")
+animation = NodePath("../../AnimatedSprite2D")
+Pleyer2 = NodePath("../..")
+
+[node name="reload_Time" type="Timer" parent="weapon manager" index="3"]
+
+[node name="Fire_rate" type="Timer" parent="weapon manager" index="4"]
+
+[node name="end_of_gun" type="Marker2D" parent="." index="7"]
+position = Vector2(8.42284, 5.26036)
+gizmo_extents = 0.0
+
+[node name="gun_diraction" type="Marker2D" parent="." index="8"]
+position = Vector2(14.7221, 5.07307)
+
+[connection signal="area_entered" from="Player_Hit_box" to="." method="_on_player_hit_box_area_entered"]
+[connection signal="area_exited" from="Player_Hit_box" to="." method="_on_player_hit_box_area_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="weapon manager/reload_Time" to="weapon manager/Colt" method="_on_reload_time_timeout"]
+[connection signal="timeout" from="weapon manager/reload_Time" to="weapon manager/Rifle" method="_on_reload_time_timeout"]
+[connection signal="timeout" from="weapon manager/reload_Time" to="weapon manager/Shotgun" method="_on_reload_time_timeout"]
+[connection signal="timeout" from="weapon manager/Fire_rate" to="weapon manager/Colt" method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="weapon manager/Fire_rate" to="weapon manager/Rifle" method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="weapon manager/Fire_rate" to="weapon manager/Shotgun" method="_on_fire_rate_timeout"]

@@ -1,0 +1,563 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvdkkifjjt6p1"]
+
+[ext_resource type="Script" path="res://scripts/Menu/Main_menu.gd" id="1_84nw4"]
+[ext_resource type="Texture2D" uid="uid://cjlm0os7m08iq" path="res://GFX/BUTTONS/bUTTONl.png" id="2_iiftg"]
+[ext_resource type="Script" path="res://scripts/Menu/second_menu_sp.gd" id="3_2psgi"]
+[ext_resource type="Texture2D" uid="uid://7l5n5nuup4nd" path="res://GFX/BUTTONS/bUTTON-Peresedl.png" id="3_4k5xe"]
+
+[node name="Main_menu" type="Control"]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_84nw4")
+
+[node name="Menu_container" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SP_container" type="VBoxContainer" parent="Menu_container"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+script = ExtResource("3_2psgi")
+
+[node name="New_Game" type="TextureButton" parent="Menu_container/SP_container"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_pressed = ExtResource("3_4k5xe")
+texture_hover = ExtResource("2_iiftg")
+
+[node name="Label" type="Label" parent="Menu_container/SP_container/New_Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بازی جدید
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load_Game" type="TextureButton" parent="Menu_container/SP_container"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_pressed = ExtResource("3_4k5xe")
+texture_hover = ExtResource("2_iiftg")
+
+[node name="Label" type="Label" parent="Menu_container/SP_container/Load_Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بارگذاری"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="Menu_container/SP_container"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_pressed = ExtResource("3_4k5xe")
+texture_hover = ExtResource("2_iiftg")
+
+[node name="Label" type="Label" parent="Menu_container/SP_container/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بازگشت"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Setting" type="VBoxContainer" parent="Menu_container"]
+visible = false
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="Game-Play" type="TextureButton" parent="Menu_container/Setting"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Menu_container/Setting/Game-Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "گیم پلی"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sound" type="TextureButton" parent="Menu_container/Setting"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Menu_container/Setting/Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "صدا
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Video" type="TextureButton" parent="Menu_container/Setting"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Menu_container/Setting/Video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ویدئو
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="Menu_container/Setting"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Menu_container/Setting/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بازگشت
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="First_menu" type="VBoxContainer" parent="Menu_container"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="SinglePlayer" type="TextureButton" parent="Menu_container/First_menu"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../MulltyPlayer")
+texture_pressed = ExtResource("3_4k5xe")
+texture_hover = ExtResource("2_iiftg")
+
+[node name="Label" type="Label" parent="Menu_container/First_menu/SinglePlayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بازی تک نفره"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MulltyPlayer" type="TextureButton" parent="Menu_container/First_menu"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../SinglePlayer")
+focus_neighbor_bottom = NodePath("../Settings")
+texture_pressed = ExtResource("3_4k5xe")
+texture_hover = ExtResource("2_iiftg")
+
+[node name="Label" type="Label" parent="Menu_container/First_menu/MulltyPlayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "بازی چند نفره
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="Menu_container/First_menu"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../MulltyPlayer")
+focus_neighbor_bottom = NodePath("../Exit")
+texture_pressed = ExtResource("3_4k5xe")
+texture_hover = ExtResource("2_iiftg")
+
+[node name="Label" type="Label" parent="Menu_container/First_menu/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "تنظیمات
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="Menu_container/First_menu"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../SinglePlayer")
+texture_pressed = ExtResource("3_4k5xe")
+texture_hover = ExtResource("2_iiftg")
+
+[node name="Label" type="Label" parent="Menu_container/First_menu/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "خروج
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sound" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="Sound/VBoxContainer"]
+layout_mode = 2
+
+[node name="Master-sound" type="HBoxContainer" parent="Sound/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 185
+
+[node name="HSlider" type="HSlider" parent="Sound/VBoxContainer/Master-sound"]
+custom_minimum_size = Vector2(500, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 88.0
+
+[node name="Label" type="Label" parent="Sound/VBoxContainer/Master-sound"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "صدای کل
+"
+
+[node name="Sfx" type="HBoxContainer" parent="Sound/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 150
+
+[node name="HSlider" type="HSlider" parent="Sound/VBoxContainer/Sfx"]
+custom_minimum_size = Vector2(500, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 88.0
+
+[node name="Label" type="Label" parent="Sound/VBoxContainer/Sfx"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "صدای محیط
+"
+
+[node name="Music" type="HBoxContainer" parent="Sound/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 200
+
+[node name="HSlider" type="HSlider" parent="Sound/VBoxContainer/Music"]
+custom_minimum_size = Vector2(500, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 88.0
+
+[node name="Label" type="Label" parent="Sound/VBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "موسیقی
+"
+
+[node name="back" type="TextureButton" parent="Sound/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sound/VBoxContainer/back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 46
+text = "بازگشت"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="video" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="video/VBoxContainer"]
+layout_mode = 2
+
+[node name="Full-Screen" type="HBoxContainer" parent="video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 620
+
+[node name="CheckButton" type="CheckButton" parent="video/VBoxContainer/Full-Screen"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="video/VBoxContainer/Full-Screen"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "تمام صفحه
+"
+
+[node name="Brightness" type="HBoxContainer" parent="video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 210
+
+[node name="HSlider" type="HSlider" parent="video/VBoxContainer/Brightness"]
+custom_minimum_size = Vector2(500, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 88.0
+
+[node name="Label" type="Label" parent="video/VBoxContainer/Brightness"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "روشنایی
+"
+
+[node name="Shadow" type="HBoxContainer" parent="video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 720
+
+[node name="CheckButton" type="CheckButton" parent="video/VBoxContainer/Shadow"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="video/VBoxContainer/Shadow"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "سایه
+"
+
+[node name="back" type="TextureButton" parent="video/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="video/VBoxContainer/back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 46
+text = "بازگشت"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game-Play" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game-Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="Game-Play/VBoxContainer"]
+layout_mode = 2
+
+[node name="Auto-Save" type="HBoxContainer" parent="Game-Play/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 620
+
+[node name="CheckButton" type="CheckButton" parent="Game-Play/VBoxContainer/Auto-Save"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Game-Play/VBoxContainer/Auto-Save"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "سیو اتوماتیک
+"
+
+[node name="back" type="TextureButton" parent="Game-Play/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Game-Play/VBoxContainer/back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 46
+text = "بازگشت"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load_box" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 33.0
+offset_right = 303.0
+offset_bottom = 533.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Load_box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Load_box/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text_Line" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 31.0
+placeholder_text = "Write Your game name (Max 12 Character)"
+
+[connection signal="pressed" from="Menu_container/SP_container/New_Game" to="Menu_container/SP_container" method="_on_new_game_pressed"]
+[connection signal="pressed" from="Menu_container/SP_container/Load_Game" to="Menu_container/SP_container" method="_on_load_game_pressed"]
+[connection signal="pressed" from="Menu_container/SP_container/Back" to="Menu_container/SP_container" method="_on_back_pressed"]
+[connection signal="pressed" from="Menu_container/First_menu/SinglePlayer" to="." method="_on_single_player_pressed"]
